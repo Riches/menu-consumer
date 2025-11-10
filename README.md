@@ -1,0 +1,58 @@
+# Menu Consumer Library
+
+A PHP library for interacting with the Great Food Ltd REST API (and potentially more in the future), providing functionality to retrieve menus, products, and update product information.
+
+## Installation
+
+```bash
+composer install
+```
+
+## Usage
+
+### Scenario 1: List Products for the Takeaway Menu
+
+```bash
+php examples/scenario1.php
+```
+
+This will authenticate with the API, retrieve the "Takeaway" menu, fetch its products, and display them in a tabular format.
+
+### Scenario 2: Update Product Name
+
+```bash
+php examples/scenario2.php
+```
+
+This demonstrates updating a product name (e.g., correcting "Chpis" to "Chips" for product ID 84 in menu 7).
+
+## Testing
+
+Run the test suite:
+
+```bash
+composer test
+```
+
+The test suite includes:
+- API endpoint integration tests
+- Scenario 1 validation
+- Scenario 2 validation
+
+## Architecture
+
+The library is structured with:
+- **API Client** (`GreatFood`): Main interface for API operations
+- **Authentication** (`GreatFoodAuthClient`): Handles OAuth token retrieval
+- **HTTP Client** (`HttpClient`): Abstract HTTP interface (currently mocked for testing)
+- **Models** (`Menu`, `Product`): Domain models for API responses
+
+## Potential Concerns & Improvements
+
+- **Real HTTP Client**: Currently only a `MockHttpClient` is implemented. For production use, a real HTTP client implementation (e.g., using Symfony HTTPClient) should be added.
+- **Token Expiration**: Not implemented, makes sense to be added with the full HttpClient implementation.
+- **Secret management**: Currently secrets are hardcoded in the scenario*.php files. These would be better loaded in as environment variables, especially in the real implementation and in production 
+- **Error handling and retries**: Add retry with backoff for HTTP or network errors.
+- **Response validation**: Validate and normalise API responses; surface clear success/exception messages, rather than tabulated responses/inconsistent strings.
+- **Logging/observability**: Optional request/response logging for debugging.
+- **Increasing code standards**: Rules can be added to php-cs-fixer and the level can be increased in PHPStan to target higher levels of conformity.

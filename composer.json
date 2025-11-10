@@ -1,0 +1,29 @@
+{
+  "name": "riches/menu-consumer",
+  "version": "0.0.1",
+  "description": "Client library for consuming third party menu APIs.",
+  "type": "library",
+  "require": {
+    "php": ">=8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Riches\\MenuConsumer\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "friendsofphp/php-cs-fixer": "^3.89",
+    "phpstan/phpstan": "^2.1"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Riches\\MenuConsumer\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "cs-fixer": "vendor/bin/php-cs-fixer fix .",
+    "phpstan": "vendor/bin/phpstan"
+  }
+}
