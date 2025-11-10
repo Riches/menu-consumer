@@ -39,6 +39,28 @@ The test suite includes:
 - Scenario 1 validation
 - Scenario 2 validation
 
+## Code Quality
+
+### PHP-CS-Fixer
+
+Check and fix code style issues:
+
+```bash
+composer cs-fixer
+```
+
+This will automatically fix code style issues according to the configured rules.
+
+### PHPStan
+
+Run static analysis to detect potential bugs:
+
+```bash
+composer phpstan
+```
+
+This will analyze the codebase for type errors, potential bugs, and other issues.
+
 ## Architecture
 
 The library is structured with:
