@@ -78,3 +78,10 @@ The library is structured with:
 - **Response validation**: Validate and normalise API responses; surface clear success/exception messages, rather than tabulated responses/inconsistent strings.
 - **Logging/observability**: Optional request/response logging for debugging.
 - **Increasing code standards**: Rules can be added to php-cs-fixer and the level can be increased in PHPStan to target higher levels of conformity.
+
+### Further considerations (considered after 2 hour limit)
+- HTTP Client including mock should have been based on PSR-17 and PSR-18 for better drop-in replacement of different HTTP clients (or Symfony HTTPClient)
+- Api\GreatFood should be based on a common interface so that the same methods e.g. getMenuByName is available for all API providers
+- Same as above for classes in Model
+- Separating mocked responses into Request/Response GET/POST/PUT directories improves understandability & limits developer confusion or conflict (e.g. GET and POST to same endpoint)
+- The mock HTTP implementation doesn't actually verify that Authentication is supplied or if it is correct. On all endpoints that require auth we could add an explicit check against token.json.
